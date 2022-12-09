@@ -6,55 +6,58 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Новогодняя анимация</title>
-  <link rel="preload" href="/fonts/inter-v12-cyrillic-700.woff" as="font" type="font/woff" crossorigin>
-  <link rel="preload" href="/fonts/inter-v12-cyrillic-700.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/img/logo.png" as="image">
-  <link rel="preload" href="/style/preload.css" as="style">
-  <link rel="preload" href="/script/preload.js" as="script">
-  <link rel="stylesheet" href="/style/preload.css">
-  <link rel="stylesheet" href="/style/style.css">
+  <link rel="preload" href="fonts/inter-v12-cyrillic-700.woff" as="font" type="font/woff" crossorigin>
+  <link rel="preload" href="fonts/inter-v12-cyrillic-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="img/logo.png" as="image">
+  <link rel="preload" href="style/preload.css" as="style">
+  <link rel="preload" href="script/preload.js" as="script">
+  <link rel="stylesheet" href="style/preload.css">
+  <link rel="stylesheet" href="style/style.css">
 </head>
 
 <body>
   <div class="preloader">
-    <img class="logo" src="/img/logo.png" alt="preloader" width="300" height="108">
+    <img class="logo" src="img/logo.png" alt="preloader" width="300" height="108">
     <div class="preloader__counter">0%</div>
-    <script src="/script/preload.js"></script>
+    <script src="script/preload.js"></script>
   </div>
   <main class="app">
     <div class="app__elem app__garland">
       <div class="app__garland-flashlight"></div>
-      <img src="/img/garland.png" alt="garland" width="1253" height="211">
+      <img src="img/garland.png" alt="garland" width="1253" height="211">
     </div>
     <div class="app__elem app__wreath">
-      <img src="/img/wreath.png" alt="wreath" width="278" height="260">
+      <img src="img/wreath.png" alt="wreath" width="278" height="260">
     </div>
     <div class="app__elem app__sock">
-      <img src="/img/sock.png" alt="sock" width="83" height="147">
+      <img src="img/sock.png" alt="sock" width="83" height="147">
     </div>
     <div class="app__elem app__present app__present-01" role="button">
-      <img src="/img/present-01.png" alt="present-01" width="176" height="143">
+      <img src="img/present-01.png" alt="present-01" width="176" height="143">
     </div>
     <div class="app__elem app__present app__present-02" role="button">
-      <img src="/img/present-02.png" alt="present-02" width="125" height="149">
+      <img src="img/present-02.png" alt="present-02" width="125" height="149">
     </div>
     <div class="app__elem app__present app__present-03" role="button">
-      <img src="/img/present-03.png" alt="present-03" width="97" height="118">
+      <img src="img/present-03.png" alt="present-03" width="97" height="118">
     </div>
     <div class="app__elem app__present app__present-04" role="button">
-      <img src="/img/present-04.png" alt="present-04" width="103" height="130">
+      <img src="img/present-04.png" alt="present-04" width="103" height="130">
     </div>
     <div class="app__elem app__present app__present-05" role="button">
-      <img src="/img/present-05.png" alt="present-05" width="104" height="60">
+      <img src="img/present-05.png" alt="present-05" width="104" height="60">
     </div>
     <div class="app__elem app__present app__present-06" role="button">
-      <img src="/img/present-06.png" alt="present-06" width="131" height="86">
+      <img src="img/present-06.png" alt="present-06" width="131" height="86">
     </div>
     <div class="app__elem app__present app__present-07" role="button">
-      <img src="/img/present-07.png" alt="present-07" width="65" height="79">
+      <img src="img/present-07.png" alt="present-07" width="65" height="79">
     </div>
   </main>
-  <script src="/script/script.js"></script>
+  <div class="popup" hidden aria-hidden="true">
+    <div class="popup__message"></div>
+  </div>
+  <script src="script/script.js"></script>
 </body>
 
 </html>
