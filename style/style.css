@@ -1,0 +1,212 @@
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local(''),
+       url('../fonts/inter-v12-cyrillic-700.woff2') format('woff2'),
+       url('../fonts/inter-v12-cyrillic-700.woff') format('woff');
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  overflow: hidden;
+  min-height: 100vh;
+  box-sizing: border-box;
+  align-items: center;
+  font-family: 'Inter', serif;
+  justify-content: center;
+  background-color: #222;
+  background-image: url("../img/christmas-interior-background.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto 100%;
+}
+
+.app__elem {
+  opacity: 0;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  transform-origin: center;
+  transition-duration: 0.3s, 0.3s;
+  transition-property: opacity, transform;
+}
+.app.animate .app__elem {
+  opacity: 1;
+}
+.app__elem img {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}
+.app.animate .app__elem img {
+  animation-play-state: running;
+}
+.app__garland {
+  top: calc(50% - 42.9vh);
+  left: 50%;
+  width: 155.7vh;
+  height: 26.2vh;
+  transition-delay: 2s, 0s;
+}
+.app__garland img {
+  animation: app__garland 1.5s ease 2s paused;
+}
+.app__garland-flashlight {
+  opacity: 0;
+  transition: opacity 0s ease 4s;
+}
+.app.animate .app__garland-flashlight {
+  opacity: 1;
+}
+.app__garland-flashlight::before,
+.app__garland-flashlight::after {
+  display: block;
+  content: "";
+  width: 4px;
+  height: 4px;
+  position: absolute;
+  border-radius: 50%;
+  background-color: #fee9bd;
+  box-shadow: 0 0 20px 0 rgba(255, 251, 212, 0.9);
+}
+.app__garland-flashlight::before {
+  top: 73%;
+  left: 20.8%;
+}
+.app__garland-flashlight::after {
+  top: 67%;
+  left: 32.1%;
+}
+.app.animate .app__garland-flashlight::before {
+  animation: flashlight 4s ease infinite;
+}
+.app.animate .app__garland-flashlight::after {
+  animation: flashlight 4s ease 1s infinite;
+}
+.app__wreath {
+  top: calc(50% - 25.3vh);
+  left: calc(50% - 2.6vh);
+  width: 34.5vh;
+  height: 32.3vh;
+  transition-delay: 3.5s, 0s;
+}
+.app__wreath img {
+  transform-origin: center top;
+  animation: app__wreath 1.5s ease 3.5s paused;
+}
+.app__sock {
+  top: calc(50% + 8.5vh);
+  left: calc(50% + 17.5vh);
+  width: 10.3vh;
+  height: 18.3vh;
+  transition-delay: 5s, 0s;
+}
+.app__sock img {
+  transform-origin: center top;
+  animation: app__sock 1.5s ease 5s paused;
+}
+.app__present-01 {
+  top: calc(50% + 34.4vh);
+  left: calc(50% + 60.4vh);
+  width: 21.9vh;
+  height: 17.8vh;
+}
+.app__present-02 {
+  top: calc(50% + 34.2vh);
+  left: calc(50% + 44.5vh);
+  width: 15.5vh;
+  height: 18.5vh;
+}
+.app__present-03 {
+  top: calc(50% + 36.1vh);
+  left: calc(50% + 21.9vh);
+  width: 12.1vh;
+  height: 14.7vh;
+}
+.app__present-04 {
+  top: calc(50% + 35.6vh);
+  left: calc(50% + 32.4vh);
+  width: 12.8vh;
+  height: 16.2vh;
+}
+.app__present-05 {
+  top: calc(50% + 39.7vh);
+  left: calc(50% + 65.6vh);
+  width: 12.9vh;
+  height: 7.5vh;
+}
+.app__present-06 {
+  top: calc(50% + 38.2vh);
+  left: calc(50% + 32.8vh);
+  width: 16.3vh;
+  height: 10.7vh;
+}
+.app__present-07 {
+  top: calc(50% + 38.6vh);
+  left: calc(50% + 52.6vh);
+  width: 8.1vh;
+  height: 9.8vh;
+}
+.app__present {
+  cursor: pointer;
+}
+.app__present img {
+  filter: drop-shadow(0 0 0 rgba(255, 255, 255, 0.9));
+  transition: filter 0.3s;
+  transform-origin: center bottom;
+}
+.app__present:hover img {
+  transition-duration: 0.2s;
+  animation: presentHover 0.4s ease;
+  filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.9));
+}
+
+@keyframes app__garland {
+  0% {
+    transform: translateY(-40px);
+  }
+  65% {
+    transform: translateY(10px);
+  }
+  90% {
+    transform: translateY(-2px);
+  }
+}
+@keyframes app__wreath {
+  0% {
+    transform: translateY(-50px) scale(1.15);
+  }
+  50% {
+    transform: translateY(-8px) scale(1);
+  }
+  75% {
+    transform: translateY(0) scaleY(1.02);
+  }
+  95% {
+    transform: translateY(0) scaleY(1);
+  }
+}
+@keyframes app__sock {
+  0% {
+    transform: rotate(-20deg);
+  }
+  50% {
+    transform: rotate(8deg);
+  }
+  70% {
+    transform: rotate(-1deg);
+  }
+}
+@keyframes presentHover {
+  50% {
+    transform: translateY(0px) scale(0.9, 1.1);
+  }
+}
+@keyframes flashlight {
+  50% {
+    box-shadow: 0 0 20px 10px rgba(255, 251, 212, 0.9);
+  }
+}
