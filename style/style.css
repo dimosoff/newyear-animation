@@ -1,28 +1,56 @@
 @font-face {
-  font-family: 'Inter';
+  font-family: "Inter";
   font-style: normal;
-  font-weight: 700;
+  font-weight: 500;
   font-display: swap;
-  src: local(''),
-       url('../fonts/inter-v12-cyrillic-700.woff2') format('woff2'),
-       url('../fonts/inter-v12-cyrillic-700.woff') format('woff');
+  src: local(""), url("../fonts/inter-v12-cyrillic-500.woff2") format("woff2"),
+    url("../fonts/inter-v12-cyrillic-500.woff") format("woff");
+}
+/* null styles */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+img {
+  max-width: 100%;
+  display: block;
+}
+svg {
+  overflow: hidden;
+  vertical-align: middle;
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  display: flex;
   overflow: hidden;
-  min-height: 100vh;
-  box-sizing: border-box;
-  align-items: center;
-  font-family: 'Inter', serif;
-  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  font-family: "Inter", serif;
   background-color: #222;
-  background-image: url("../img/christmas-interior-background.jpg");
+  background-image: url("../img/background-01.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: auto 100%;
+  text-rendering: optimizeSpeed;
 }
 
 .app__elem {
@@ -208,5 +236,49 @@ body {
 @keyframes flashlight {
   50% {
     box-shadow: 0 0 20px 10px rgba(255, 251, 212, 0.9);
+  }
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  z-index: 110;
+  display: flex;
+  visibility: hidden;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+.popup.active {
+  opacity: 1;
+  visibility: visible;
+}
+.popup__inner {
+  margin: 30px;
+  border: 6px solid #fff;
+  opacity: 0.95;
+  padding: 50px;
+  max-width: 382px;
+  border-radius: 25px;
+  background-color: #DB2128;
+}
+.popup__content {
+  color: #fff;
+  font-size: 24px;
+  text-align: center;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+@media (max-width: 768px) {
+  .popup__inner {
+    padding: 30px;
+  }
+  .popup__content {
+    font-size: 22px;
   }
 }

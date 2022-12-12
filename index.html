@@ -1,60 +1,74 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" style="background-color:#65ac1e">
 
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Новогодняя анимация</title>
-  <link rel="preload" href="/fonts/inter-v12-cyrillic-700.woff" as="font" type="font/woff" crossorigin>
-  <link rel="preload" href="/fonts/inter-v12-cyrillic-700.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/img/logo.png" as="image">
-  <link rel="preload" href="/style/preload.css" as="style">
-  <link rel="preload" href="/script/preload.js" as="script">
-  <link rel="stylesheet" href="/style/preload.css">
-  <link rel="stylesheet" href="/style/style.css">
+  <link rel="preload" href="fonts/inter-v12-cyrillic-800.woff" as="font" type="font/woff" crossorigin>
+  <link rel="preload" href="fonts/inter-v12-cyrillic-800.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="img/logo.png" as="image">
+  <link rel="preload" href="style/preload.css" as="style">
+  <link rel="preload" href="script/preload.js" as="script">
+  <link rel="shortcut icon" href="img/favicon.ico">
+  <link rel="stylesheet" href="style/preload.css">
+  <link rel="stylesheet" href="style/style.css">
 </head>
 
 <body>
   <div class="preloader">
-    <img class="logo" src="/img/logo.png" alt="preloader" width="300" height="108">
-    <div class="preloader__counter">0%</div>
-    <script src="/script/preload.js"></script>
+    <img class="logo" src="img/logo.png" alt="preloader" width="228" height="82">
+    <div class="preloader__state">
+      <svg width="58" height="58" viewBox="0 0 58 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path class="preloader__path"
+          d="M29 2C25.4543 2 21.9433 2.69838 18.6676 4.05525C15.3918 5.41213 12.4153 7.40094 9.90812 9.90812C7.40094 12.4153 5.41213 15.3918 4.05525 18.6675C2.69838 21.9433 2 25.4543 2 29C2 32.5457 2.69837 36.0567 4.05525 39.3325C5.41213 42.6082 7.40093 45.5847 9.90812 48.0919C12.4153 50.5991 15.3918 52.5879 18.6675 53.9447C21.9433 55.3016 25.4543 56 29 56C32.5457 56 36.0567 55.3016 39.3325 53.9447C42.6082 52.5879 45.5847 50.5991 48.0919 48.0919C50.5991 45.5847 52.5879 42.6082 53.9447 39.3325C55.3016 36.0567 56 32.5457 56 29C56 25.4543 55.3016 21.9433 53.9447 18.6675C52.5879 15.3918 50.5991 12.4153 48.0919 9.90812C45.5847 7.40094 42.6082 5.41213 39.3325 4.05525C36.0567 2.69838 32.5457 2 29 2L29 2Z"
+          stroke="white" stroke-width="4" stroke-miterlimit="16" stroke-linecap="round" stroke-linejoin="round"
+          stroke-dasharray="170" stroke-dashoffset="170" />
+      </svg>
+      <div class="preloader__counter">0</div>
+    </div>
   </div>
+  <script src="script/preload.js"></script>
   <main class="app">
     <div class="app__elem app__garland">
       <div class="app__garland-flashlight"></div>
-      <img src="/img/garland.png" alt="garland" width="1253" height="211">
+      <img src="img/garland.png" alt="garland" width="1253" height="211">
     </div>
     <div class="app__elem app__wreath">
-      <img src="/img/wreath.png" alt="wreath" width="278" height="260">
+      <img src="img/wreath.png" alt="wreath" width="278" height="260">
     </div>
     <div class="app__elem app__sock">
-      <img src="/img/sock.png" alt="sock" width="83" height="147">
+      <img src="img/sock.png" alt="sock" width="83" height="147">
     </div>
     <div class="app__elem app__present app__present-01" role="button">
-      <img src="/img/present-01.png" alt="present-01" width="176" height="143">
+      <img src="img/present-01.png" alt="present-01" width="176" height="143">
     </div>
     <div class="app__elem app__present app__present-02" role="button">
-      <img src="/img/present-02.png" alt="present-02" width="125" height="149">
+      <img src="img/present-02.png" alt="present-02" width="125" height="149">
     </div>
     <div class="app__elem app__present app__present-03" role="button">
-      <img src="/img/present-03.png" alt="present-03" width="97" height="118">
+      <img src="img/present-03.png" alt="present-03" width="97" height="118">
     </div>
     <div class="app__elem app__present app__present-04" role="button">
-      <img src="/img/present-04.png" alt="present-04" width="103" height="130">
+      <img src="img/present-04.png" alt="present-04" width="103" height="130">
     </div>
     <div class="app__elem app__present app__present-05" role="button">
-      <img src="/img/present-05.png" alt="present-05" width="104" height="60">
+      <img src="img/present-05.png" alt="present-05" width="104" height="60">
     </div>
     <div class="app__elem app__present app__present-06" role="button">
-      <img src="/img/present-06.png" alt="present-06" width="131" height="86">
+      <img src="img/present-06.png" alt="present-06" width="131" height="86">
     </div>
     <div class="app__elem app__present app__present-07" role="button">
-      <img src="/img/present-07.png" alt="present-07" width="65" height="79">
+      <img src="img/present-07.png" alt="present-07" width="65" height="79">
     </div>
   </main>
-  <script src="/script/script.js"></script>
+  <div class="popup">
+    <div class="popup__inner">
+      <p class="popup__content"></p>
+    </div>
+  </div>
+  <script src="script/script.js" async></script>
 </body>
 
 </html>
