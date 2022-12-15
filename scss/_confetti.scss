@@ -2,7 +2,7 @@ $yellow: #ffd300;
 $blue: #17d3ff;
 $pink: #ff4e91;
 
-$duration: 1000;
+$duration: 3000;
 
 @function randomNum($min, $max) {
   $rand: random();
@@ -17,10 +17,11 @@ $duration: 1000;
   position: relative;
   display: flex;
   width: 100%;
-  height: 200px;
+  height: 80vh;
   opacity: 0;
   z-index: 150;
   overflow: hidden;
+  visibility: hidden;
   transition: visibility 0.5s, opacity 0.5s;
 
   &.active {
@@ -75,6 +76,6 @@ $duration: 1000;
     opacity: 1;
   }
   to {
-    transform: translateY(200px);
+    transform: translateY(80vh);
   }
 }
