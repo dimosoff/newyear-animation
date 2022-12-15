@@ -9,7 +9,9 @@ function afterLoad() {
 
   console.log("loaded");
   preloaderElement.classList.add("hidden");
-  document.querySelector(".app").classList.add("animate");
+  setTimeout(() => {
+    document.querySelector(".app").classList.add("animate");
+  }, 2000)
 }
 
 function orientationHandler() {

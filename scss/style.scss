@@ -1,0 +1,286 @@
+@import "_utility.scss";
+
+// @function tovw($pixels) {
+//   @return calc(0.052083333333333vw * $pixels);
+// }
+
+html {
+  background-color: #222 !important;
+}
+body {
+  font-family: "Inter", serif;
+  text-rendering: optimizeSpeed;
+}
+
+.app {
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  bottom: 0;
+  height: 100%;
+  position: fixed;
+  overflow: hidden;
+
+  &.animate {
+    @extend %app-animate;
+  }
+}
+.to-animate {
+  transition-duration: 1.5s, 1.5s, 1.5s;
+  transition-property: opacity, fill-opacity, transform;
+}
+.logo {
+  transform: translate(-240px);
+  transition-duration: 1s;
+}
+.furniture {
+  position: relative;
+  animation: furniture 1.5s ease 1s paused;
+  fill-opacity: 0;
+  transition-delay: 1s;
+}
+.christmas-tree {
+  animation: christmas-tree 1.5s ease 2.5s paused;
+  fill-opacity: 0;
+  transition-delay: 2.5s;
+  transform-origin: 80% bottom;
+}
+.garland-1-branch {
+  fill-opacity: 0;
+  transition-delay: 4s;
+}
+.dark {
+  opacity: 0.5;
+  animation: dark 5s ease 3.5s paused;
+  visibility: visible;
+  transition-delay: 5.5s;
+  animation-fill-mode: forwards;
+}
+.garland-1 {
+  fill-opacity: 0;
+  transition-delay: 5.5s;
+  transition-duration: 1s;
+}
+.christmas-tree-garland {
+  fill-opacity: 0;
+  transition-delay: 5.7s;
+  transition-duration: 1.3s;
+}
+.garland-2 {
+  animation: garland-2 1.5s ease 5.3s paused;
+  fill-opacity: 0;
+  transition-delay: 5.3s;
+  transform-origin: center top;
+  transition-duration: 1.5s;
+}
+.garland-3 {
+  fill-opacity: 0;
+  transition-delay: 5.8s;
+  transition-duration: 2s;
+}
+.fire {
+  fill-opacity: 0;
+  transition-delay: 6.5s;
+
+  & image {
+    opacity: 0;
+    transition-delay: 6.5s;
+  }
+}
+.present {
+  &-1,
+  &-2,
+  &-3,
+  &-4,
+  &-5 {
+    fill-opacity: 0;
+  }
+  &-1 {
+    transition-delay: 7.5s;
+    transform-origin: 65% 89%;
+  }
+  &-2 {
+    transition-delay: 7.3s;
+    transform-origin: 72% 86%;
+  }
+  &-3 {
+    transition-delay: 7.6s;
+    transform-origin: 78% 89%;
+  }
+  &-4 {
+    transition-delay: 7.8s;
+    transform-origin: 85% 86%;
+  }
+  &-5 {
+    transition-delay: 7.4s;
+    transform-origin: 92% 89%;
+  }
+}
+%app-animate {
+  .logo {
+    transform: translate(0);
+  }
+  .furniture {
+    fill-opacity: 1;
+    animation-play-state: running;
+  }
+  .christmas-tree {
+    fill-opacity: 1;
+    animation-play-state: running;
+  }
+  .garland-1-branch {
+    fill-opacity: 1;
+  }
+  .dark {
+    animation-play-state: running;
+  }
+  .garland-1 {
+    fill-opacity: 1;
+  }
+  .christmas-tree-garland {
+    fill-opacity: 1;
+  }
+  .garland-2 {
+    fill-opacity: 1;
+    animation-play-state: running;
+  }
+  .garland-3 {
+    fill-opacity: 1;
+  }
+  .fire {
+    fill-opacity: 1;
+
+    & image {
+      opacity: 1;
+    }
+  }
+  .present {
+    &-1,
+    &-2,
+    &-3,
+    &-4,
+    &-5 {
+      fill-opacity: 1;
+      transition-delay: 0s;
+    }
+  }
+}
+
+g[class*="present"] {
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.5);
+    transition-delay: 0s;
+    transition-duration: 0.2s;
+  }
+}
+
+@keyframes garland-2 {
+  0% {
+    transform: translateY(-50px) scale(1.15);
+  }
+  50% {
+    transform: translateY(-8px) scale(1);
+  }
+  75% {
+    transform: translateY(0) scaleY(1.02);
+  }
+  95% {
+    transform: translateY(0) scaleY(1);
+  }
+}
+@keyframes furniture {
+  0% {
+    top: -40px;
+    left: -10px;
+  }
+  20% {
+    top: 0;
+    left: -8px;
+  }
+  50% {
+    top: -10px;
+    left: -5px;
+  }
+  60% {
+    top: 0;
+    left: -2px;
+  }
+}
+@keyframes dark {
+  35% {
+    opacity: 0.5;
+  }
+  55% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+@keyframes christmas-tree {
+  0% {
+    transform: scale(0.7, 0.5);
+  }
+  50% {
+    transform: scale(0.9, 1.1);
+  }
+  70% {
+    transform: scale(1.05, 0.95);
+  }
+}
+@keyframes flashlight {
+  50% {
+    box-shadow: 0 0 20px 10px rgba(255, 251, 212, 0.9);
+  }
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  z-index: 110;
+  display: flex;
+  visibility: hidden;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s, visibility 0.3s;
+
+  &.active {
+    opacity: 1;
+    visibility: visible;
+  }
+  &__inner {
+    margin: 30px;
+    border: 6px solid #fff;
+    opacity: 0.95;
+    padding: 50px;
+    max-width: 382px;
+    border-radius: 25px;
+    background-color: #db2128;
+  }
+  &__content {
+    color: #fff;
+    font-size: 24px;
+    text-align: center;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+}
+
+@media (max-width: 768px) {
+  .popup {
+    &__inner {
+      padding: 30px;
+    }
+    &__content {
+      font-size: 22px;
+    }
+  }
+}

@@ -222,7 +222,7 @@
 <path style="mix-blend-mode:multiply" opacity="0.13" d="M-125.599 -72.4497L82.9875 40.1842L316.202 38.7339L249.57 -72.4497L533.982 -59.4491L557.156 34.4038L570.414 35.4324L555.701 -72.4497H622.333V36.2963L667.247 35.8541V-84H930.456L-125.599 -72.4497Z" fill="url(#paint121_linear_11_11138)"/>
 <defs>
 <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
-<use xlink:href="#image0_11_11138" transform="translate(-0.00830022) scale(0.000538169 0.000745156)"/>
+<use href="#image0_11_11138" transform="translate(-0.00830022) scale(0.000538169 0.000745156)"/>
 </pattern>
 <linearGradient id="paint0_linear_11_11138" x1="703.379" y1="630.25" x2="741.7" y2="103.423" gradientUnits="userSpaceOnUse">
 <stop stop-color="#B0A2AC"/>
