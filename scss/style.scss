@@ -1,13 +1,10 @@
 @import "_utility.scss";
 
-// @function tovw($pixels) {
-//   @return calc(0.052083333333333vw * $pixels);
-// }
-
 html {
   background-color: #222 !important;
 }
 body {
+  font-weight: 500;
   font-family: "Inter", serif;
   text-rendering: optimizeSpeed;
 }
@@ -37,17 +34,14 @@ body {
 .furniture {
   position: relative;
   animation: furniture 1.5s ease 1s paused;
-  fill-opacity: 0;
   transition-delay: 1s;
 }
 .christmas-tree {
   animation: christmas-tree 1.5s ease 2.5s paused;
-  fill-opacity: 0;
   transition-delay: 2.5s;
   transform-origin: 80% bottom;
 }
 .garland-1-branch {
-  fill-opacity: 0;
   transition-delay: 4s;
 }
 .dark {
@@ -58,29 +52,24 @@ body {
   animation-fill-mode: forwards;
 }
 .garland-1 {
-  fill-opacity: 0;
   transition-delay: 5.5s;
   transition-duration: 1s;
 }
 .christmas-tree-garland {
-  fill-opacity: 0;
   transition-delay: 5.7s;
   transition-duration: 1.3s;
 }
 .garland-2 {
   animation: garland-2 1.5s ease 5.3s paused;
-  fill-opacity: 0;
   transition-delay: 5.3s;
   transform-origin: center top;
   transition-duration: 1.5s;
 }
 .garland-3 {
-  fill-opacity: 0;
   transition-delay: 5.8s;
   transition-duration: 2s;
 }
 .fire {
-  fill-opacity: 0;
   transition-delay: 6.5s;
 
   & image {
@@ -95,30 +84,66 @@ body {
   &-4,
   &-5 {
     fill-opacity: 0;
+
+    &__inner {
+      cursor: pointer;
+      position: relative;
+      transform: scale(1);
+      transition: transform 0.5s;
+
+      &:hover {
+        transform: scale(1.5);
+        transition-duration: 0.2s;
+      }
+      &::before {
+        content: "";
+        position: absolute;
+        top: 20%;
+        left: 50%;
+        width: 1px;
+        height: 1px;
+        box-shadow: 0 0 30px 10px white;
+      }
+    }
   }
   &-1 {
     transition-delay: 7.5s;
-    transform-origin: 65% 89%;
+
+    &__inner {
+      transform-origin: 65% 89%;
+    }
   }
   &-2 {
     transition-delay: 7.3s;
-    transform-origin: 72% 86%;
+
+    &__inner {
+      transform-origin: 72% 94%;
+    }
   }
   &-3 {
     transition-delay: 7.6s;
-    transform-origin: 78% 89%;
+
+    &__inner {
+      transform-origin: 78% 89%;
+    }
   }
   &-4 {
     transition-delay: 7.8s;
-    transform-origin: 85% 86%;
+
+    &__inner {
+      transform-origin: 85% 94%;
+    }
   }
   &-5 {
     transition-delay: 7.4s;
-    transform-origin: 92% 89%;
+
+    &__inner {
+      transform-origin: 92% 89%;
+    }
   }
 }
 %app-animate {
-  .logo {
+  .logo:not(.hidden) {
     transform: translate(0);
   }
   .furniture {
@@ -162,18 +187,159 @@ body {
     &-4,
     &-5 {
       fill-opacity: 1;
-      transition-delay: 0s;
+      // transition-delay: 0s;
     }
   }
 }
 
-g[class*="present"] {
-  cursor: pointer;
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  z-index: 110;
+  display: flex;
+  visibility: hidden;
+  align-items: center;
+  justify-content: center;
+  transform: scale(0.9);
+  transition: opacity 1.5s, visibility 1.5s, transform 1.5s;
 
-  &:hover {
-    transform: scale(1.5);
-    transition-delay: 0s;
-    transition-duration: 0.2s;
+  &:not(.popup-wish) {
+    pointer-events: none;
+  }
+  &.active {
+    opacity: 1;
+    transform: scale(1);
+    visibility: visible !important;
+
+    // @extend %popup-active;
+  }
+  &__inner {
+    margin: 30px;
+    border: 6px solid #fff;
+    opacity: 0.95;
+    padding: 50px;
+    max-width: 382px;
+    // animation: pulse 1.5s ease 0s infinite paused;
+    border-radius: 25px;
+    background-color: #db2128;
+
+    // %popup-active & {
+    //   animation-play-state: running;
+    // }
+  }
+  &__content {
+    color: #fff;
+    font-size: 24px;
+    text-align: center;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+  &__badges {
+    &::before {
+      top: -36px;
+      left: -26px;
+      width: 77px;
+      height: 82px;
+      content: "";
+      animation: popup-border-badge 3s 1.5s infinite;
+      position: absolute;
+      background-image: url("../img/message-border-badge-1.svg");
+      background-repeat: no-repeat;
+      background-position: top left;
+    }
+    &::after {
+      width: 82px;
+      right: -40px;
+      height: 118px;
+      bottom: -32px;
+      content: "";
+      animation: popup-border-badge 3s 1.8s infinite;
+      position: absolute;
+      background-image: url("../img/message-border-badge-2.svg");
+      background-repeat: no-repeat;
+      background-position: right bottom;
+    }
+  }
+  &__button {
+    left: 50%;
+    color: #fff;
+    border: none;
+    bottom: -17px;
+    cursor: pointer;
+    padding: 21px;
+    position: absolute;
+    font-size: 16px;
+    min-width: 257px;
+    transform: translate(-50%, 50%) scale(1);
+    transition: transform 0.3s, background-color 0.3s;
+    font-weight: 800;
+    font-family: inherit;
+    border-radius: 10px;
+    text-transform: uppercase;
+    background-color: #68a923;
+
+    &:hover {
+      transform: translate(-50%, 50%) scale(1.1);
+      background-color: #89c04f;
+    }
+  }
+}
+.popup-wish {
+  backdrop-filter: blur(15px);
+
+  &:not(.active) {
+    pointer-events: none;
+  }
+  &.finished {
+    .popup__inner {
+      animation-play-state: running;
+    }
+    .popup__inner-finished {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+  & .popup__inner {
+    position: relative;
+    max-width: 444px;
+    animation: inner-finished 2s paused;
+    animation-fill-mode: forwards;
+    &::before {
+      top: -34px;
+      left: -20px;
+      right: -20px;
+      bottom: -30px;
+      content: "";
+      position: absolute;
+      animation: popup-border 3s infinite;
+      background-size: 100% 100%;
+      background-image: url("../img/message-border.svg");
+      background-repeat: no-repeat;
+    }
+  }
+  .popup__inner-finished {
+    opacity: 0;
+    position: absolute;
+    visibility: hidden;
+
+    .finished-logo {
+      margin: 30px auto 0;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .popup {
+    &__inner {
+      padding: 30px;
+    }
+    &__content {
+      font-size: 22px;
+    }
   }
 }
 
@@ -237,50 +403,39 @@ g[class*="present"] {
     box-shadow: 0 0 20px 10px rgba(255, 251, 212, 0.9);
   }
 }
-
-.popup {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  opacity: 0;
-  z-index: 110;
-  display: flex;
-  visibility: hidden;
-  align-items: center;
-  justify-content: center;
-  transition: opacity 0.3s, visibility 0.3s;
-
-  &.active {
-    opacity: 1;
-    visibility: visible;
+@keyframes pulse {
+  50% {
+    transform: scale(1.03);
   }
-  &__inner {
-    margin: 30px;
-    border: 6px solid #fff;
-    opacity: 0.95;
-    padding: 50px;
-    max-width: 382px;
-    border-radius: 25px;
-    background-color: #db2128;
+}
+@keyframes popup-border {
+  40% {
+    transform: rotate(1deg);
   }
-  &__content {
-    color: #fff;
-    font-size: 24px;
-    text-align: center;
-    font-weight: 500;
-    line-height: 1.2;
+  70% {
+    transform: rotate(-0.5deg);
+  }
+  85% {
+    transform: rotate(0.5deg);
+  }
+}
+@keyframes popup-border-badge {
+  35% {
+    transform: rotate(5deg);
+  }
+  65% {
+    transform: rotate(-3deg);
+  }
+}
+@keyframes inner-finished {
+  40% {
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-500px);
+    visibility: hidden;
   }
 }
 
-@media (max-width: 768px) {
-  .popup {
-    &__inner {
-      padding: 30px;
-    }
-    &__content {
-      font-size: 22px;
-    }
-  }
-}
+@import "_confetti.scss";
