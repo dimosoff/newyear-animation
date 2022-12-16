@@ -21,24 +21,31 @@ const preloader = () => {
 
     preloaderInterval = setInterval(function () {
       const counterValue = parseInt(preloaderCounter.textContent, 10);
-      preloaderCounter.textContent = `${counterValue + 1}`;
-      preloaderPath.setAttribute(
-        "stroke-dashoffset",
-        preloaderPathLength + 0.01 * preloaderPathLength * counterValue
-      );
+      preloaderCounter.textContent = counterValue + 1;
+      setPreloaderPath(preloaderPath, counterValue);
       if (counterValue < 93) return;
       clearInterval(preloaderInterval);
     }, 30);
   }
   function hidePreload() {
     clearInterval(preloaderInterval);
-    preloaderCounter.textContent = "100";
-    preloaderPath.setAttribute("stroke-dashoffset", preloaderPathLength * 2);
+    preloaderCounter.textContent = '92';
+
     preloaderInterval = setInterval(function () {
+      const counterValue = parseInt(preloaderCounter.textContent, 10);
+      preloaderCounter.textContent = counterValue + 1;
+      setPreloaderPath(preloaderPath, counterValue);
+      if (counterValue < 99) return;
+      clearInterval(preloaderInterval);
       // eslint-disable-next-line no-undef
       afterLoad();
-      clearInterval(preloaderInterval);
-    }, 500);
+    }, 200);
+  }
+  function setPreloaderPath(path, value) {
+    path.setAttribute(
+      "stroke-dashoffset",
+      preloaderPathLength + 0.01 * preloaderPathLength * value
+    );
   }
 };
 

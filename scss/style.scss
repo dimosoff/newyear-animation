@@ -72,9 +72,10 @@ body {
 .fire {
   transition-delay: 6.5s;
 
-  & image {
+  &-element {
     opacity: 0;
     transition-delay: 6.5s;
+    background: url("../img/fire.svg#src-1") left bottom/contain no-repeat transparent;
   }
 }
 .present {
@@ -176,7 +177,7 @@ body {
   .fire {
     fill-opacity: 1;
 
-    & image {
+    &-element {
       opacity: 1;
     }
   }
