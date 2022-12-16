@@ -6,7 +6,9 @@ const presents = document.querySelectorAll(".present-hover");
 const finishButton = document.getElementById("finish");
 const confettiElement = document.querySelector(".confetti");
 const logoElement = document.querySelector(".logo");
-let pageHeight = window.innerHeight;
+let deviceOrient = null,
+  prevPopupMessage = "",
+  appState = false;
 
 const popupMessages = {
   m1: "В 2023 году самые амбициозные планы воплотятся в жизнь, а удача будет сопутствовать во всех начинаниях!",
@@ -18,27 +20,35 @@ const popupMessages = {
   noticeToChoose: "Выбери подарок и узнай предсказание на 2023 год",
 };
 
+window.addEventListener("resize", () => {
+  if (!appState && orientationState()) {
+    appState = true;
+    afterLoad();
+  }
+  orientationState();
+  windowWidth();
+});
+
 // eslint-disable-next-line no-unused-vars
 function afterLoad() {
-  document.addEventListener("resize", orientationHandler());
-  orientationHandler();
+  windowWidth();
+  if (!orientationState()) togglePopup(popupMessages.wrongOrientation);
+  if (!orientationState()) return;
 
-  console.log("loaded");
   preloaderElement.classList.add("hidden");
 
   setTimeout(() => {
     document.querySelector(".app").classList.add("animate");
   }, 2000);
   setTimeout(() => {
-    showPopup(popupMessages.noticeToChoose);
-  }, 11000);
+    togglePopup(popupMessages.noticeToChoose);
+  }, 9000);
 
   presents.forEach((present) =>
     present.addEventListener("click", (event) => {
       const messageCode = event.currentTarget.dataset.message;
-      hidePopup();
       logoElement.classList.add("hidden");
-      showPopup(popupMessages[messageCode], popupWishElement);
+      togglePopup(popupMessages[messageCode], popupWishElement);
     })
   );
 
@@ -48,17 +58,29 @@ function afterLoad() {
   });
 }
 
-function orientationHandler() {
-  if (window.innerWidth < window.innerHeight) {
-    showPopup(popupMessages.wrongOrientation);
+function orientationState() {
+  if (window.innerWidth < window.innerHeight && deviceOrient != "mobile") {
+    togglePopup(popupMessages.wrongOrientation);
+    deviceOrient = "mobile";
+  }
+  if (window.innerWidth >= window.innerHeight && deviceOrient != "pc") {
+    togglePopup();
+    deviceOrient = "pc";
+  }
+  return deviceOrient === "pc" ? true : false;
+}
+function togglePopup(message = "", popup = popupElement) {
+  prevPopupMessage = message;
+
+  if (message === "") {
+    popup.classList.remove("active");
     return false;
   }
-  hidePopup();
-}
-function showPopup(message = "", popup = popupElement) {
-  popup.classList.add("active");
+
   popup.querySelector(".popup__content").textContent = message;
+  popup.classList.add("active");
+  return true;
 }
-function hidePopup(popup = popupElement) {
-  popup.classList.remove("active");
+function windowWidth() {
+  document.body.style = "--windowWidth:" + window.innerWidth;
 }

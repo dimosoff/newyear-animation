@@ -48,34 +48,50 @@ body {
   opacity: 0.5;
   animation: dark 5s ease 3.5s paused;
   visibility: visible;
-  transition-delay: 5.5s;
+  transition-delay: 7.5s;
   animation-fill-mode: forwards;
 }
 .garland-1 {
-  transition-delay: 5.5s;
+  animation: garland 1.5s ease 5.3s paused;
+  transition-delay: 6s;
   transition-duration: 1s;
 }
-.christmas-tree-garland {
-  transition-delay: 5.7s;
-  transition-duration: 1.3s;
-}
 .garland-2 {
-  animation: garland-2 1.5s ease 5.3s paused;
-  transition-delay: 5.3s;
+  animation: garland 1.5s ease 5.3s paused;
+  transition-delay: 5.5s;
   transform-origin: center top;
   transition-duration: 1.5s;
 }
 .garland-3 {
-  transition-delay: 5.8s;
+  transition-delay: 6.7s;
   transition-duration: 2s;
 }
+.christmas-tree-garland {
+  transition-delay: 7.1s;
+  transition-duration: 1.3s;
+}
 .fire {
-  transition-delay: 6.5s;
+  transition-delay: 7.5s;
 
   &-element {
     opacity: 0;
     transition-delay: 6.5s;
-    background: url("../img/fire.svg#src-1") left bottom/contain no-repeat transparent;
+  }
+}
+.glow-animation > path {
+  animation: glow 2s infinite;
+
+  &:nth-child(4n) {
+    animation-delay: 0.3s;
+  }
+  &:nth-child(4n+1) {
+    animation-delay: 0.6s;
+  }
+  &:nth-child(4n+2) {
+    animation-delay: 0.9s;
+  }
+  &:nth-child(4n+3) {
+    animation-delay: 1.2s;
   }
 }
 .present {
@@ -108,40 +124,43 @@ body {
     }
   }
   &-1 {
-    transition-delay: 7.5s;
+    transition-delay: 7.9s;
 
     &__inner {
       transform-origin: 65% 89%;
     }
   }
   &-2 {
-    transition-delay: 7.3s;
+    transition-delay: 9.3s;
 
     &__inner {
       transform-origin: 72% 94%;
     }
   }
   &-3 {
-    transition-delay: 7.6s;
+    transition-delay: 8.8s;
 
     &__inner {
       transform-origin: 78% 89%;
     }
   }
   &-4 {
-    transition-delay: 7.8s;
+    transition-delay: 8.3s;
 
     &__inner {
       transform-origin: 85% 94%;
     }
   }
   &-5 {
-    transition-delay: 7.4s;
+    transition-delay: 9s;
 
     &__inner {
       transform-origin: 92% 89%;
     }
   }
+}
+#fire-pattern-svg {
+  animation: fire 1s steps(11, start) infinite paused;
 }
 %app-animate {
   .logo:not(.hidden) {
@@ -190,6 +209,9 @@ body {
       fill-opacity: 1;
       // transition-delay: 0s;
     }
+  }
+  #fire-pattern-svg {
+    animation-play-state: running;
   }
 }
 
@@ -332,26 +354,33 @@ body {
 
     .finished-new-year {
       transform-origin: center 400%;
-      animation: finshed-new-year 3s 2s infinite paused;
+      animation: finished-new-year 3s 2s infinite paused;
     }
     .finished-logo {
       margin: 80px auto 0;
     }
   }
 }
-
-@media (max-width: 768px) {
+@media (min-width: 768px) {
+  .popup__inner,
+  .popup__inner-finished {
+    transform: scale(
+      calc(2 * var(--windowWidth) / (var(--windowWidth) + 1366))
+    );
+  }
+}
+@media (max-width: 767.98px) {
   .popup {
     &__inner {
       padding: 30px;
     }
     &__content {
-      font-size: 22px;
+      font-size: 20px;
     }
   }
 }
 
-@keyframes garland-2 {
+@keyframes garland {
   0% {
     transform: translateY(-50px) scale(1.15);
   }
@@ -384,10 +413,10 @@ body {
   }
 }
 @keyframes dark {
-  35% {
+  20% {
     opacity: 0.5;
   }
-  55% {
+  75% {
     opacity: 0.3;
   }
   100% {
@@ -414,6 +443,11 @@ body {
 @keyframes pulse {
   50% {
     transform: scale(1.03);
+  }
+}
+@keyframes glow {
+  50% {
+    opacity: 0.3;
   }
 }
 @keyframes popup-border {
@@ -460,12 +494,20 @@ body {
     transform: translateY(0);
   }
 }
-@keyframes finshed-new-year {
+@keyframes finished-new-year {
   33% {
     transform: rotate(-2deg) translateX(20px);
   }
   66% {
     transform: rotate(2deg) translateX(-20px);
+  }
+}
+@keyframes fire {
+  0% {
+    transform: translate(0) scale(0.6045, 0.5);
+  }
+  100% {
+    transform: translate(-605px) scale(0.6045, 0.5);
   }
 }
 
