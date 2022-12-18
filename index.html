@@ -21,10 +21,9 @@
         font-style: normal;
         font-weight: 800;
         font-display: swap;
-        src: local(""), url("../fonts/inter-v12-cyrillic-800.woff2") format("woff2"),
-          url("../fonts/inter-v12-cyrillic-800.woff") format("woff");
+        src: local(""), url("fonts/inter-v12-cyrillic-800.woff2") format("woff2"),
+          url("fonts/inter-v12-cyrillic-800.woff") format("woff");
       }
-
       .preloader {
         font-family: "Inter", serif;
         position: absolute;
@@ -43,13 +42,11 @@
         justify-content: center;
         background-color: #65ac1e;
       }
-
       .preloader.hidden {
         opacity: 0;
         visibility: hidden;
         transition: opacity 3s, visibility 3s;
       }
-
       .preloader__counter {
         position: absolute;
         top: 50%;
@@ -59,18 +56,15 @@
         font-family: "Inter", sans-serif;
         transform: translate(-50%, -50%);
       }
-
       .preloader__state {
         position: relative;
         margin-top: 50px;
         margin-bottom: 5px;
       }
-
       .preloader__state svg {
         display: inline-block;
         vertical-align: middle;
       }
-
       .preloader__path {
         transition: stroke-dashoffset 0.3s;
       }
