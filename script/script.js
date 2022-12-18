@@ -1,12 +1,13 @@
 const preloaderElement = document.querySelector(".preloader");
 const popupElement = document.querySelector(".popup");
 const popupWishElement = document.querySelector(".popup-wish");
-const popupContent = document.querySelector(".popup__content");
+// const popupContent = document.querySelector(".popup__content");
 const presents = document.querySelectorAll(".present-hover");
 const finishButton = document.getElementById("finish");
 const confettiElement = document.querySelector(".confetti");
 const logoElement = document.querySelector(".logo");
 let deviceOrient = null,
+  // eslint-disable-next-line no-unused-vars
   prevPopupMessage = "",
   appState = false;
 
@@ -20,6 +21,11 @@ const popupMessages = {
   noticeToChoose: "Выбери подарок и узнай предсказание на 2023 год",
 };
 
+// let service = document.createElement("div");
+// service.classList.add("service");
+// document.body.append(service);
+// service.textContent = window.innerWidth + " x " + window.innerHeight;
+
 window.addEventListener("resize", () => {
   if (!appState && orientationState()) {
     appState = true;
@@ -27,6 +33,8 @@ window.addEventListener("resize", () => {
   }
   orientationState();
   windowWidth();
+
+  // service.textContent = window.innerWidth + " x " + window.innerHeight;
 });
 
 // eslint-disable-next-line no-unused-vars
@@ -38,11 +46,11 @@ function afterLoad() {
   preloaderElement.classList.add("hidden");
 
   setTimeout(() => {
-    document.querySelector(".app").classList.add("animate");
+    document.body.classList.add("animate");
   }, 2000);
   setTimeout(() => {
     togglePopup(popupMessages.noticeToChoose);
-  }, 9000);
+  }, 10000);
 
   presents.forEach((present) =>
     present.addEventListener("click", (event) => {
@@ -69,6 +77,7 @@ function orientationState() {
   }
   return deviceOrient === "pc" ? true : false;
 }
+
 function togglePopup(message = "", popup = popupElement) {
   prevPopupMessage = message;
 
@@ -81,6 +90,7 @@ function togglePopup(message = "", popup = popupElement) {
   popup.classList.add("active");
   return true;
 }
+
 function windowWidth() {
   document.body.style = "--windowWidth:" + window.innerWidth;
 }

@@ -47,6 +47,7 @@ body {
   font-weight: 500;
   font-family: "Inter", serif;
   text-rendering: optimizeSpeed;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .app {
@@ -59,13 +60,14 @@ body {
   position: fixed;
   overflow: hidden;
 }
+
 .to-animate {
   transition-duration: 1.5s, 1.5s, 1.5s;
   transition-property: opacity, fill-opacity, transform;
 }
 
 .logo {
-  transform: translate(-240px);
+  transform: translate(-240px, 40px);
   transition-duration: 1s;
 }
 
@@ -74,6 +76,17 @@ body {
   -webkit-animation: furniture 1.5s ease 1s paused;
           animation: furniture 1.5s ease 1s paused;
   transition-delay: 1s;
+}
+
+.twinkle {
+  -webkit-animation: twinkle 1s infinite paused;
+          animation: twinkle 1s infinite paused;
+  transform-origin: 131.019px 502.732px;
+}
+.twinkle__right {
+  -webkit-animation-delay: 0.5s;
+          animation-delay: 0.5s;
+  transform-origin: 154.299px 521.037px;
 }
 
 .christmas-tree {
@@ -98,16 +111,16 @@ body {
 }
 
 .garland-1 {
-  -webkit-animation: garland 1.5s ease 5.3s paused;
-          animation: garland 1.5s ease 5.3s paused;
-  transition-delay: 6s;
+  -webkit-animation: garland 1.5s ease 5s paused;
+          animation: garland 1.5s ease 5s paused;
+  transition-delay: 5s;
   transition-duration: 1s;
 }
 
 .garland-2 {
-  -webkit-animation: garland 1.5s ease 5.3s paused;
-          animation: garland 1.5s ease 5.3s paused;
-  transition-delay: 5.5s;
+  -webkit-animation: garland 1.5s ease 6s paused;
+          animation: garland 1.5s ease 6s paused;
+  transition-delay: 6s;
   transform-origin: center top;
   transition-duration: 1.5s;
 }
@@ -152,7 +165,7 @@ body {
 }
 
 .present-1, .present-2, .present-3, .present-4, .present-5 {
-  fill-opacity: 0;
+  opacity: 0;
 }
 .present-1__inner, .present-2__inner, .present-3__inner, .present-4__inner, .present-5__inner {
   cursor: pointer;
@@ -173,35 +186,74 @@ body {
   height: 1px;
   box-shadow: 0 0 30px 10px white;
 }
+.present-1 circle, .present-2 circle, .present-3 circle, .present-4 circle, .present-5 circle {
+  -webkit-animation: pulse 2.5s infinite paused;
+          animation: pulse 2.5s infinite paused;
+}
 .present-1 {
-  transition-delay: 7.9s;
+  transition-delay: 8.9s;
 }
 .present-1__inner {
   transform-origin: 65% 89%;
 }
+.present-1 circle {
+  transform-origin: 65% 79%;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+  -webkit-animation-duration: 2.5s;
+          animation-duration: 2.5s;
+}
 .present-2 {
-  transition-delay: 9.3s;
+  transition-delay: 10.3s;
 }
 .present-2__inner {
   transform-origin: 72% 94%;
 }
+.present-2 circle {
+  transform-origin: 71.6% 86.5%;
+  -webkit-animation-delay: 0.5s;
+          animation-delay: 0.5s;
+  -webkit-animation-duration: 2.3s;
+          animation-duration: 2.3s;
+}
 .present-3 {
-  transition-delay: 8.8s;
+  transition-delay: 9.8s;
 }
 .present-3__inner {
   transform-origin: 78% 89%;
 }
+.present-3 circle {
+  transform-origin: 78% 82.5%;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+  -webkit-animation-duration: 2.9s;
+          animation-duration: 2.9s;
+}
 .present-4 {
-  transition-delay: 8.3s;
+  transition-delay: 9.3s;
 }
 .present-4__inner {
   transform-origin: 85% 94%;
 }
+.present-4 circle {
+  transform-origin: 85% 85%;
+  -webkit-animation-delay: 0.8s;
+          animation-delay: 0.8s;
+  -webkit-animation-duration: 2.6s;
+          animation-duration: 2.6s;
+}
 .present-5 {
-  transition-delay: 9s;
+  transition-delay: 10s;
 }
 .present-5__inner {
   transform-origin: 92% 89%;
+}
+.present-5 circle {
+  transform-origin: 93% 83%;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+  -webkit-animation-duration: 2.5s;
+          animation-duration: 2.5s;
 }
 
 #fire-pattern-svg {
@@ -209,50 +261,58 @@ body {
           animation: fire 1s steps(11, start) infinite paused;
 }
 
-.app.animate .logo:not(.hidden) {
-  transform: translate(0);
+body.animate .logo:not(.hidden) {
+  transform: translate(0, 40px);
 }
-.app.animate .furniture {
+body.animate .furniture {
   fill-opacity: 1;
   -webkit-animation-play-state: running;
           animation-play-state: running;
 }
-.app.animate .christmas-tree {
+body.animate .twinkle {
+  -webkit-animation-play-state: running;
+          animation-play-state: running;
+}
+body.animate .christmas-tree {
+  opacity: 1;
+  -webkit-animation-play-state: running;
+          animation-play-state: running;
+}
+body.animate .garland-1-branch {
+  fill-opacity: 1;
+}
+body.animate .dark {
+  -webkit-animation-play-state: running;
+          animation-play-state: running;
+}
+body.animate .garland-1 {
+  fill-opacity: 1;
+}
+body.animate .christmas-tree-garland {
+  fill-opacity: 1;
+}
+body.animate .garland-2 {
   fill-opacity: 1;
   -webkit-animation-play-state: running;
           animation-play-state: running;
 }
-.app.animate .garland-1-branch {
+body.animate .garland-3 {
   fill-opacity: 1;
 }
-.app.animate .dark {
-  -webkit-animation-play-state: running;
-          animation-play-state: running;
-}
-.app.animate .garland-1 {
+body.animate .fire {
   fill-opacity: 1;
 }
-.app.animate .christmas-tree-garland {
-  fill-opacity: 1;
-}
-.app.animate .garland-2 {
-  fill-opacity: 1;
-  -webkit-animation-play-state: running;
-          animation-play-state: running;
-}
-.app.animate .garland-3 {
-  fill-opacity: 1;
-}
-.app.animate .fire {
-  fill-opacity: 1;
-}
-.app.animate .fire-element {
+body.animate .fire-element {
   opacity: 1;
 }
-.app.animate .present-1, .app.animate .present-2, .app.animate .present-3, .app.animate .present-4, .app.animate .present-5 {
-  fill-opacity: 1;
+body.animate .present-1, body.animate .present-2, body.animate .present-3, body.animate .present-4, body.animate .present-5 {
+  opacity: 1;
 }
-.app.animate #fire-pattern-svg {
+body.animate .present-1 circle, body.animate .present-2 circle, body.animate .present-3 circle, body.animate .present-4 circle, body.animate .present-5 circle {
+  -webkit-animation-play-state: running;
+          animation-play-state: running;
+}
+body.animate #fire-pattern-svg {
   -webkit-animation-play-state: running;
           animation-play-state: running;
 }
@@ -360,6 +420,10 @@ body {
   -webkit-animation-play-state: running;
           animation-play-state: running;
 }
+.popup-wish.finished .popup__inner-finished .finished-new-year {
+  -webkit-animation-play-state: running;
+          animation-play-state: running;
+}
 .popup-wish .popup__inner {
   position: relative;
   max-width: 444px;
@@ -391,22 +455,24 @@ body {
   -webkit-animation-fill-mode: forwards;
           animation-fill-mode: forwards;
 }
+.popup-wish .popup__inner-finished svg {
+  overflow: visible;
+}
 .popup-wish .popup__inner-finished .finished-new-year {
   transform-origin: center 400%;
   -webkit-animation: finished-new-year 3s 2s infinite paused;
           animation: finished-new-year 3s 2s infinite paused;
 }
 .popup-wish .popup__inner-finished .finished-logo {
-  margin: 80px auto 0;
+  margin: 60px auto 0;
 }
 
-@media (min-width: 768px) {
-  .popup__inner,
-.popup__inner-finished {
+@media (max-width: 1366px) and (min-width: 576px) {
+  .scaled-wrapper {
     transform: scale(calc(2 * var(--windowWidth) / (var(--windowWidth) + 1366)));
   }
 }
-@media (max-width: 767.98px) {
+@media (max-width: 575.98px) {
   .popup__inner {
     padding: 30px;
   }
@@ -535,13 +601,19 @@ body {
   }
 }
 @-webkit-keyframes pulse {
-  50% {
-    transform: scale(1.03);
+  33% {
+    transform: scale(0.7);
+  }
+  66% {
+    transform: scale(1.2);
   }
 }
 @keyframes pulse {
-  50% {
-    transform: scale(1.03);
+  33% {
+    transform: scale(0.7);
+  }
+  66% {
+    transform: scale(1.2);
   }
 }
 @-webkit-keyframes glow {
@@ -643,19 +715,31 @@ body {
   }
 }
 @-webkit-keyframes finished-new-year {
-  33% {
+  40% {
     transform: rotate(-2deg) translateX(20px);
   }
-  66% {
+  50% {
     transform: rotate(2deg) translateX(-20px);
+  }
+  65% {
+    transform: rotate(-1deg) translateX(10px);
+  }
+  80% {
+    transform: rotate(0.5deg) translateX(-5px);
   }
 }
 @keyframes finished-new-year {
-  33% {
+  40% {
     transform: rotate(-2deg) translateX(20px);
   }
-  66% {
+  50% {
     transform: rotate(2deg) translateX(-20px);
+  }
+  65% {
+    transform: rotate(-1deg) translateX(10px);
+  }
+  80% {
+    transform: rotate(0.5deg) translateX(-5px);
   }
 }
 @-webkit-keyframes fire {
@@ -674,11 +758,53 @@ body {
     transform: translate(-605px) scale(0.6045, 0.5);
   }
 }
+@-webkit-keyframes twinkle {
+  15% {
+    transform: skew(-1deg);
+  }
+  33% {
+    transform: skew(2deg) scaleY(1.05);
+  }
+  55% {
+    transform: skew(-2deg);
+  }
+  75% {
+    transform: skew(0.5deg) scaleY(1.1);
+  }
+  80% {
+    transform: skew(-1deg);
+  }
+  90% {
+    transform: skew(0.5deg) scaleY(0.95);
+  }
+}
+@keyframes twinkle {
+  15% {
+    transform: skew(-1deg);
+  }
+  33% {
+    transform: skew(2deg) scaleY(1.05);
+  }
+  55% {
+    transform: skew(-2deg);
+  }
+  75% {
+    transform: skew(0.5deg) scaleY(1.1);
+  }
+  80% {
+    transform: skew(-1deg);
+  }
+  90% {
+    transform: skew(0.5deg) scaleY(0.95);
+  }
+}
 .confetti {
   justify-content: center;
   align-items: center;
-  position: relative;
+  position: fixed;
   display: flex;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 80vh;
   opacity: 0;
@@ -702,133 +828,133 @@ body {
 }
 .confetti-piece:nth-child(1) {
   left: 7%;
-  transform: rotate(-74deg);
+  transform: rotate(2deg);
   -webkit-animation: makeItRain 3000ms infinite ease-out;
           animation: makeItRain 3000ms infinite ease-out;
-  -webkit-animation-delay: 1133ms;
-          animation-delay: 1133ms;
-  -webkit-animation-duration: 3552ms;
-          animation-duration: 3552ms;
+  -webkit-animation-delay: 751ms;
+          animation-delay: 751ms;
+  -webkit-animation-duration: 2395ms;
+          animation-duration: 2395ms;
 }
 .confetti-piece:nth-child(2) {
   left: 14%;
-  transform: rotate(-72deg);
+  transform: rotate(42deg);
   -webkit-animation: makeItRain 3000ms infinite ease-out;
           animation: makeItRain 3000ms infinite ease-out;
-  -webkit-animation-delay: 165ms;
-          animation-delay: 165ms;
-  -webkit-animation-duration: 3239ms;
-          animation-duration: 3239ms;
+  -webkit-animation-delay: 1199ms;
+          animation-delay: 1199ms;
+  -webkit-animation-duration: 2484ms;
+          animation-duration: 2484ms;
 }
 .confetti-piece:nth-child(3) {
   left: 21%;
-  transform: rotate(-71deg);
+  transform: rotate(-74deg);
   -webkit-animation: makeItRain 3000ms infinite ease-out;
           animation: makeItRain 3000ms infinite ease-out;
-  -webkit-animation-delay: 786ms;
-          animation-delay: 786ms;
-  -webkit-animation-duration: 3591ms;
-          animation-duration: 3591ms;
+  -webkit-animation-delay: 12ms;
+          animation-delay: 12ms;
+  -webkit-animation-duration: 2170ms;
+          animation-duration: 2170ms;
 }
 .confetti-piece:nth-child(4) {
   left: 28%;
-  transform: rotate(-23deg);
+  transform: rotate(51deg);
   -webkit-animation: makeItRain 3000ms infinite ease-out;
           animation: makeItRain 3000ms infinite ease-out;
-  -webkit-animation-delay: 620ms;
-          animation-delay: 620ms;
-  -webkit-animation-duration: 3245ms;
-          animation-duration: 3245ms;
+  -webkit-animation-delay: 859ms;
+          animation-delay: 859ms;
+  -webkit-animation-duration: 3028ms;
+          animation-duration: 3028ms;
 }
 .confetti-piece:nth-child(5) {
   left: 35%;
-  transform: rotate(39deg);
+  transform: rotate(-67deg);
   -webkit-animation: makeItRain 3000ms infinite ease-out;
           animation: makeItRain 3000ms infinite ease-out;
-  -webkit-animation-delay: 1362ms;
-          animation-delay: 1362ms;
-  -webkit-animation-duration: 2234ms;
-          animation-duration: 2234ms;
+  -webkit-animation-delay: 54ms;
+          animation-delay: 54ms;
+  -webkit-animation-duration: 3543ms;
+          animation-duration: 3543ms;
 }
 .confetti-piece:nth-child(6) {
   left: 42%;
-  transform: rotate(6deg);
+  transform: rotate(15deg);
   -webkit-animation: makeItRain 3000ms infinite ease-out;
           animation: makeItRain 3000ms infinite ease-out;
-  -webkit-animation-delay: 1057ms;
-          animation-delay: 1057ms;
-  -webkit-animation-duration: 2333ms;
-          animation-duration: 2333ms;
+  -webkit-animation-delay: 772ms;
+          animation-delay: 772ms;
+  -webkit-animation-duration: 2923ms;
+          animation-duration: 2923ms;
 }
 .confetti-piece:nth-child(7) {
   left: 49%;
-  transform: rotate(23deg);
+  transform: rotate(55deg);
   -webkit-animation: makeItRain 3000ms infinite ease-out;
           animation: makeItRain 3000ms infinite ease-out;
-  -webkit-animation-delay: 1009ms;
-          animation-delay: 1009ms;
-  -webkit-animation-duration: 3343ms;
-          animation-duration: 3343ms;
+  -webkit-animation-delay: 472ms;
+          animation-delay: 472ms;
+  -webkit-animation-duration: 3346ms;
+          animation-duration: 3346ms;
 }
 .confetti-piece:nth-child(8) {
   left: 56%;
-  transform: rotate(-18deg);
+  transform: rotate(-55deg);
   -webkit-animation: makeItRain 3000ms infinite ease-out;
           animation: makeItRain 3000ms infinite ease-out;
-  -webkit-animation-delay: 145ms;
-          animation-delay: 145ms;
-  -webkit-animation-duration: 2739ms;
-          animation-duration: 2739ms;
+  -webkit-animation-delay: 169ms;
+          animation-delay: 169ms;
+  -webkit-animation-duration: 2272ms;
+          animation-duration: 2272ms;
 }
 .confetti-piece:nth-child(9) {
   left: 63%;
-  transform: rotate(-62deg);
+  transform: rotate(70deg);
   -webkit-animation: makeItRain 3000ms infinite ease-out;
           animation: makeItRain 3000ms infinite ease-out;
-  -webkit-animation-delay: 1242ms;
-          animation-delay: 1242ms;
-  -webkit-animation-duration: 2214ms;
-          animation-duration: 2214ms;
+  -webkit-animation-delay: 1159ms;
+          animation-delay: 1159ms;
+  -webkit-animation-duration: 3486ms;
+          animation-duration: 3486ms;
 }
 .confetti-piece:nth-child(10) {
   left: 70%;
-  transform: rotate(-14deg);
+  transform: rotate(26deg);
   -webkit-animation: makeItRain 3000ms infinite ease-out;
           animation: makeItRain 3000ms infinite ease-out;
-  -webkit-animation-delay: 640ms;
-          animation-delay: 640ms;
-  -webkit-animation-duration: 2534ms;
-          animation-duration: 2534ms;
+  -webkit-animation-delay: 240ms;
+          animation-delay: 240ms;
+  -webkit-animation-duration: 2487ms;
+          animation-duration: 2487ms;
 }
 .confetti-piece:nth-child(11) {
   left: 77%;
-  transform: rotate(-61deg);
+  transform: rotate(-74deg);
   -webkit-animation: makeItRain 3000ms infinite ease-out;
           animation: makeItRain 3000ms infinite ease-out;
-  -webkit-animation-delay: 1347ms;
-          animation-delay: 1347ms;
-  -webkit-animation-duration: 3530ms;
-          animation-duration: 3530ms;
+  -webkit-animation-delay: 50ms;
+          animation-delay: 50ms;
+  -webkit-animation-duration: 2887ms;
+          animation-duration: 2887ms;
 }
 .confetti-piece:nth-child(12) {
   left: 84%;
-  transform: rotate(18deg);
+  transform: rotate(71deg);
   -webkit-animation: makeItRain 3000ms infinite ease-out;
           animation: makeItRain 3000ms infinite ease-out;
-  -webkit-animation-delay: 1223ms;
-          animation-delay: 1223ms;
-  -webkit-animation-duration: 3312ms;
-          animation-duration: 3312ms;
+  -webkit-animation-delay: 683ms;
+          animation-delay: 683ms;
+  -webkit-animation-duration: 2709ms;
+          animation-duration: 2709ms;
 }
 .confetti-piece:nth-child(13) {
   left: 91%;
-  transform: rotate(19deg);
+  transform: rotate(-37deg);
   -webkit-animation: makeItRain 3000ms infinite ease-out;
           animation: makeItRain 3000ms infinite ease-out;
-  -webkit-animation-delay: 1050ms;
-          animation-delay: 1050ms;
-  -webkit-animation-duration: 3216ms;
-          animation-duration: 3216ms;
+  -webkit-animation-delay: 530ms;
+          animation-delay: 530ms;
+  -webkit-animation-duration: 2923ms;
+          animation-duration: 2923ms;
 }
 .confetti-piece:nth-child(odd) {
   background: #17d3ff;
