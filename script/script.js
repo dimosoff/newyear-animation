@@ -56,6 +56,7 @@ function afterLoad() {
     present.addEventListener("click", (event) => {
       const messageCode = event.currentTarget.dataset.message;
       logoElement.classList.add("hidden");
+      togglePopup();
       togglePopup(popupMessages[messageCode], popupWishElement);
     })
   );
