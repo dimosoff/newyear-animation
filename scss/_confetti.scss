@@ -24,11 +24,13 @@ $duration: 3000;
   z-index: 150;
   overflow: hidden;
   visibility: hidden;
+  pointer-events: none;
   transition: visibility 0.5s, opacity 0.5s;
 
   &.active {
     opacity: 1;
     visibility: visible !important;
+    @extend %confetti-active;
   }
 }
 .confetti-piece {
@@ -43,9 +45,12 @@ $duration: 3000;
     &:nth-child(#{$i}) {
       left: $i * 7%;
       transform: rotate(#{randomNum(-80, 80)}deg);
-      animation: makeItRain $duration * 1ms infinite ease-out;
+      animation: makeItRain $duration * 1ms infinite ease-out paused;
       animation-delay: #{randomNum(0, $duration * .5)}ms;
       animation-duration: #{randomNum($duration * .7, $duration * 1.2)}ms
+    }
+    %confetti-active &:nth-child(#{$i}) {
+      animation-play-state: running;
     }
   }
   &:nth-child(odd) {
