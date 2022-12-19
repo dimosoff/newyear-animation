@@ -18,7 +18,7 @@ const popupMessages = {
   m4: "В наступающем году исполнятся заветные мечты: вас ждут новые победы, яркие впечатления и море улыбок!",
   m5: "В 2023 году работа будет приносить удовольствие, а ваши труды будут вознаграждены по достоинству (например, отпуском на райских островах)!",
   wrongOrientation: "Измените ориентацию вашего устройства.",
-  noticeToChoose: "Выбери подарок и узнай предсказание на 2023 год",
+  noticeToChoose: "Выберите подарок и узнайте, что вас ждет в 2023 году!",
 };
 
 // let service = document.createElement("div");
@@ -50,7 +50,7 @@ function afterLoad() {
   }, 2000);
   setTimeout(() => {
     togglePopup(popupMessages.noticeToChoose);
-  }, 10000);
+  }, 14000);
 
   presents.forEach((present) =>
     present.addEventListener("click", (event) => {
