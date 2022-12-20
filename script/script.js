@@ -55,7 +55,8 @@ function afterLoad() {
       var messageCode = event.currentTarget.dataset.message;
       logoElement.classList.add("hidden");
       togglePopup();
-      togglePopup(popupMessages[messageCode], popupWishElement);
+      popupWishElement.querySelector(".popup__content").textContent = popupMessages[messageCode];
+      popupWishElement.classList.add("active");
     });
   });
   finishButton.addEventListener("click", function () {
@@ -74,9 +75,13 @@ function orientationState() {
   }
   return deviceOrient === "pc" ? true : false;
 }
-function togglePopup() {
-  var message = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
-  var popup = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : popupElement;
+function togglePopup(message, popup) {
+  if (message === void 0) {
+    message = "";
+  }
+  if (popup === void 0) {
+    popup = popupElement;
+  }
   prevPopupMessage = message;
   if (message === "") {
     popup.classList.remove("active");

@@ -21,7 +21,7 @@ body {
   overflow: hidden;
 }
 body.animate {
-    @extend %app-animate;
+  @extend %app-animate;
 }
 .to-animate {
   transition-duration: 1.5s, 1.5s, 1.5s;
@@ -42,19 +42,18 @@ body.animate {
   &:nth-child(5n) {
     opacity: 0.8;
   }
-  &:nth-child(5n+1) {
+  &:nth-child(5n + 1) {
     opacity: 0.6;
     animation-delay: 3.5s;
   }
-  &:nth-child(5n+2) {
+  &:nth-child(5n + 2) {
     opacity: 0.9;
     animation-delay: 5.5s;
   }
-  &:nth-child(5n+3) {
+  &:nth-child(5n + 3) {
     opacity: 0.4;
     animation-delay: 9s;
   }
-
 }
 .twinkle {
   animation: twinkle 1s infinite paused;
@@ -116,13 +115,13 @@ body.animate {
   &:nth-child(4n) {
     animation-delay: 0.3s;
   }
-  &:nth-child(4n+1) {
+  &:nth-child(4n + 1) {
     animation-delay: 0.6s;
   }
-  &:nth-child(4n+2) {
+  &:nth-child(4n + 2) {
     animation-delay: 0.9s;
   }
-  &:nth-child(4n+3) {
+  &:nth-child(4n + 3) {
     animation-delay: 1.2s;
   }
 }
@@ -309,9 +308,11 @@ body.animate {
   &__inner {
     margin: 30px;
     border: 6px solid #fff;
+    z-index: 1;
     opacity: 0.95;
     padding: 50px;
     max-width: 382px;
+    position: relative;
     // animation: pulse 1.5s ease 0s infinite paused;
     border-radius: 25px;
     background-color: #db2128;
@@ -499,19 +500,19 @@ body.animate {
 }
 @keyframes christmas-tree-balls {
   0% {
-    fill: #FDE0AE;
+    fill: #fde0ae;
   }
   25% {
-    fill: #FF4949;
+    fill: #ff4949;
   }
   50% {
-    fill: #98FF69;
+    fill: #98ff69;
   }
   75% {
-    fill: #B1D0FF;
+    fill: #b1d0ff;
   }
   100% {
-    fill: #FDE0AE;
+    fill: #fde0ae;
   }
 }
 @keyframes flashlight {
@@ -552,8 +553,15 @@ body.animate {
   }
 }
 @keyframes inner-finished {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+  }
   40% {
+    opacity: 1;
     transform: translateY(20px);
+    visibility: visible;
   }
   100% {
     opacity: 0;
@@ -600,7 +608,7 @@ body.animate {
 }
 @keyframes twinkle {
   15% {
-    transform: skew(-1deg)
+    transform: skew(-1deg);
   }
   33% {
     transform: skew(2deg) scaleY(1.05);
@@ -617,7 +625,6 @@ body.animate {
   90% {
     transform: skew(0.5deg) scaleY(0.95);
   }
-  
 }
 
 @import "_confetti.scss";
