@@ -1,7 +1,7 @@
 @import "_utility.scss";
 
 html {
-  background-color: #222 !important;
+  background-color: #85566e !important;
 }
 body {
   font-weight: 500;
@@ -438,7 +438,7 @@ body.animate {
 @media (max-width: 1366px) and (min-width: 576px) {
   .scaled-wrapper {
     transform: scale(
-      calc(2 * var(--windowWidth) / (var(--windowWidth) + 1366))
+      calc(1.4 * var(--windowWidth) / (var(--windowWidth) + 1366))
     );
   }
 }
